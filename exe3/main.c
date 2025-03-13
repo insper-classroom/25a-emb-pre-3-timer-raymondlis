@@ -8,7 +8,7 @@ const int LED_PIN_R = 4;
 
 volatile bool timer_fired = false;
 volatile int flag_f_r = 0;
-alarm_id_t alarm;
+volatile alarm_id_t alarm;
 
 int64_t alarm_callback(alarm_id_t id, void *user_data) {
     timer_fired = true;
