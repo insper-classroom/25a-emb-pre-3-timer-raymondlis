@@ -21,16 +21,13 @@ void btn_callback(uint gpio, uint32_t events) {
         if (gpio == BTN_PIN_R) {
             flag_f_r = 0;
             alarm = add_alarm_in_ms(500, alarm_callback, NULL, false);
-            printf("Botão pressionado\n");
         }
     } else if (events == 0x8) { // rise edge
         if (gpio == BTN_PIN_R) {
             cancel_alarm(alarm);
             if (flag_f_r) {
-                printf("Alarme disparado\n");
                 gpio_put(LED_PIN_R, !gpio_get(LED_PIN_R));
             } else {
-                printf("Botão solto antes do tempo\n");
             }
             timer_fired = false;
         }
